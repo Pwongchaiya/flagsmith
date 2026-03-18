@@ -2,7 +2,8 @@ import React, { FC } from 'react'
 import Button from './base/forms/Button'
 import Input from './base/forms/Input'
 import Icon from './Icon'
-import ServerSideSDKKeys from './ServerSideSDKKeys'
+import ServerSideSDKKeysLegacy from './ServerSideSDKKeys'
+import { SDKKeysPage as SDKKeysPageNew } from './pages/sdk-keys'
 import PageTitle from './PageTitle'
 import Utils from 'common/utils/utils'
 import { useRouteMatch } from 'react-router-dom'
@@ -15,6 +16,10 @@ interface RouteParams {
 const SDKKeysPage: FC = () => {
   const match = useRouteMatch<RouteParams>()
   const environmentId = match?.params?.environmentId
+
+  if (Utils.getFlagsmithHasFeature('rtk_server_side_sdk_keys')) {
+    return <SDKKeysPageNew />
+  }
 
   return (
     <div
@@ -55,7 +60,7 @@ const SDKKeysPage: FC = () => {
         </Row>
       </div>
       <hr className='py-0 my-4' />
-      <ServerSideSDKKeys environmentId={environmentId} />
+      <ServerSideSDKKeysLegacy environmentId={environmentId} />
     </div>
   )
 }
