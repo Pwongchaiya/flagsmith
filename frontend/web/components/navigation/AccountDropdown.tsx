@@ -56,7 +56,7 @@ const AccountDropdown: React.FC = () => {
   return (
     <div className='feature-action' tabIndex={-1}>
       <button
-        className='btn btn-link p-0 d-flex ps-3 lh-1 align-items-center'
+        className='account-dropdown-trigger d-flex ps-3 lh-1 align-items-center'
         onClick={(e) => {
           e.stopPropagation()
           setIsOpen(!isOpen)
@@ -68,7 +68,9 @@ const AccountDropdown: React.FC = () => {
         <span className='mr-1'>
           <Icon name='person' width={20} fill='#9DA4AE' />
         </span>
-        <span className='d-none d-md-block'>Account</span>
+        <span className='d-none d-md-block account-dropdown-trigger__label'>
+          Account
+        </span>
       </button>
 
       {isOpen &&

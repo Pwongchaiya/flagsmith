@@ -13,6 +13,20 @@ nav a {
     font-weight: bold;
   }
 }
+.account-dropdown-trigger {
+  color: var(--color-text-default);
+  background: none;
+  border: none;
+  padding: 0;
+  cursor: pointer;
+  font-weight: 500;
+  &:hover,
+  &:focus {
+    .account-dropdown-trigger__label {
+      color: var(--color-text-action);
+    }
+  }
+}
 .nav-sub-link-disabled {
   cursor: not-allowed;
   span {
